@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React  from 'react'
+//import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { logoutAsincrono } from '../actions/actionLogin';
-import { endpoint } from "../helpers/endpoint"
+//import { endpoint } from "../helpers/endpoint"
 
 export const Home = () => {
 
-  const [ingredientes, setIngredientes] = React.useState([])
+  /*const [ingredientes, setIngredientes] = React.useState([])
 
   React.useEffect(() => {
     fetch(endpoint)
     .then(resp => resp.json())
     .then(data => setIngredientes(data.results))
   }, [])
-
+  */
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutAsincrono())
