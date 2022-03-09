@@ -4,7 +4,7 @@ import { loginEmailPassAsincrono, loginGoogleAsincrono, /*logoutAsincrono*/ } fr
 import { useDispatch } from 'react-redux';
 import "../styles/loginRegistro.css";
 
-function Login({history}){
+function Login({ history }) {
 
     const dispatch = useDispatch();
 
@@ -41,29 +41,38 @@ function Login({history}){
             <div className="body">
                 <form className="formulario" onSubmit={handleSubmit}>
                     <h1>Iniciar Sesion</h1>
-                    <button className="button" onClick={() => handleGoogleAsincrono()}>Continuar con Google</button>
-                    <p>Correo electronico</p>
-                    <input 
-                        type="text" 
-                        placeholder="Ingrese su correo electronico" 
-                        name="email" 
-                        onChange={handleInputChange}>
-                    </input>
-                    <p>Contraseña</p>
-                    <input 
-                        type="password" 
-                        placeholder="Ingrese su contraseña" 
-                        name="password" 
-                        onChange={handleInputChange}>
-                    </input>
-                    <br></br>
-                    <button className="button" type="submit">Iniciar Sesion</button>
-                    <p><a href="/home">¿Se te olvido tu contraseña?</a></p>
-                    <p>¿Aun no tienes una cuenta? <Link to="/registro">Registrarse</Link></p>
-                    
+                    <div className='contenedor'>
+
+                        <div className='input-contenedor'>
+                            <i className="fas fa-envelope icon"></i>
+                            <input
+                                type="text"
+                                placeholder="Correo electronico"
+                                name="email"
+                                onChange={handleInputChange}>
+                            </input>
+                        </div>
+
+                        <div className='input-contenedor'>
+                            <i className="fas fa-key icon"></i>
+                            <input
+                                type="password"
+                                placeholder="Contraseña"
+                                name="password"
+                                onChange={handleInputChange}>
+                            </input>
+                        </div>
+                        <button className="button" type="submit">Iniciar Sesion</button>
+                        <button className="button" onClick={() => handleGoogleAsincrono()}>Continuar con Google</button>
+                        <p><a href="/home">¿Se te olvido tu contraseña?</a></p>
+                        <p>¿Aun no tienes una cuenta? <Link to="/registro">Registrate</Link></p>
+
+                    </div>
+
+
                 </form>
             </div>
-        </div>   
+        </div>
     );
 }
 

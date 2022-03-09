@@ -32,37 +32,52 @@ export const Registro = () => {
       <div className="body">
         <form className="formulario" onSubmit={handleSubmit}>
           <h1>Registrar cuenta</h1>
-          <p>Nombre</p>
-          <input 
-              type="text" 
-              placeholder="Ingrese su Nombre" 
-              name="nombre" 
-              onChange={handleInputChange}>
-          </input>
-          <p>Correo electronico</p>
-          <input 
-              type="text" 
-              placeholder="Ingrese su correo electronico" 
-              name="email" 
-              onChange={handleInputChange}>
-          </input>
-          <p>Contraseña</p>
-          <input 
-              type="password" 
-              placeholder="Ingrese su contraseña" 
-              name="pass1" 
-              onChange={handleInputChange}>
-          </input>
-          <p>Repita su contraseña</p>
-          <input 
-              type="password" 
-              placeholder="Ingrese su contraseña" 
-              name="pass1" 
-              onChange={handleInputChange}>
-          </input>
-          <br></br>
+
+          <div className='contenedor'>
+
+            <div className='input-contenedor'>
+              <i className="fas fa-user icon"></i>
+              <input
+                type="text"
+                placeholder="Nombre"
+                name="nombre"
+                onChange={handleInputChange}>
+              </input>
+            </div>
+
+            <div className='input-contenedor'>
+              <i className="fas fa-envelope icon"></i>
+              <input
+                type="text"
+                placeholder="Correo electronico"
+                name="email"
+                onChange={handleInputChange}>
+              </input>
+            </div>
+            <div className='input-contenedor'>
+              <i className="fas fa-key icon"></i>
+              <input
+                type="password"
+                placeholder="Contraseña"
+                name="pass1"
+                onChange={handleInputChange}>
+              </input>
+            </div>
+
+            <div className='input-contenedor'>
+              <i className="fas fa-key icon"></i>
+              <input
+                type="password"
+                placeholder="Repita su contraseña"
+                name="pass1"
+                onChange={handleInputChange}>
+              </input>
+            </div>
+
+          </div>
+
           <button className="button">Registrar cuenta</button>
-          <p>¿Ya tienes una cuenta? <Link to="/">Login</Link></p>
+          <p>¿Ya tienes una cuenta? <Link to="/">Iniciar Sesión</Link></p>
         </form>
       </div>
     </div>
