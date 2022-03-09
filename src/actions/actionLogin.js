@@ -1,5 +1,5 @@
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { google } from "../firebase/firebaseConfig";
+import { google, facebook } from "../firebase/firebaseConfig";
 import { types } from "../types/types";
 
 //logout
@@ -32,6 +32,20 @@ export const loginGoogleAsincrono = () => {
         .catch (error => {
             console.log(error)
         })
+    }
+}
+
+export const loginFacebookAsincrono = () => {
+    return (dispatch) => {
+        const auth = getAuth()
+        signInWithPopup(auth, facebook)
+            .then(({ user }) => {
+                dispatch(loginSincrono(user.uid, user.displayName))
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 

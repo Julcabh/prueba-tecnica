@@ -1,10 +1,28 @@
-import React  from 'react'
+import React from 'react'
 //import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { logoutAsincrono } from '../actions/actionLogin';
-//import { endpoint } from "../helpers/endpoint"
+import { endpoint } from "../helpers/endpoint"
 
 export const Home = () => {
+
+  fetch(endpoint)
+    .then((response) => {
+      if (!response.ok) {
+        alert("No se encontro url");
+        throw new Error("No se encontro url");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.ingredients[0])
+      let {producto} = data.ingredients[0].product;
+      let {marca} = data.ingredients[0].brand;
+      let {precio} = data.ingredients[0].price;
+      document.querySelector(".producto").innerText =  producto;
+      document.querySelector(".marca").innerText =  marca;
+      document.querySelector(".precio").innerText =  precio;
+    });
 
   /*const [ingredientes, setIngredientes] = React.useState([])
 
@@ -14,6 +32,8 @@ export const Home = () => {
     .then(data => setIngredientes(data.results))
   }, [])
   */
+
+
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutAsincrono())
@@ -43,14 +63,14 @@ export const Home = () => {
               <th scope="col">Product</th>
               <th scope="col">Brand</th>
               <th scope="col">Price</th>
-            </tr> 
+            </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Margarina de maíz</td>
-              <td>Artua</td>
-              <td>2.95</td>
+              <td className='producto'>x</td>
+              <td className='marca'>x</td>
+              <td className='precio'>x</td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -95,8 +115,8 @@ export const Home = () => {
         <p>Sub total</p>
         <p>Gastos de envio</p>
         <p>Total</p>
-        <button className="button" type="submit">Comprar ingredientes</button>
-            
+        <button className="button" type="submit">Comprar  ingredientes</button>
+
       </form>
 
     </div>
